@@ -9,21 +9,16 @@ app = Flask(__name__)
 def hello_world():
     return render_template('index.html', utc_dt=datetime.datetime.utcnow())
 
-@app.route('/capitalize/<word>/')
-def capitalize(word):
-    return '<h1>{}</h1>'.format(escape(word.capitalize()))
-
-@app.route('/users/<int:user_id>/')
-def greet_user(user_id):
-    users = ['Bob', 'Jane', 'Adam']
+@app.route('/login/<int:user_id>/')
+def greet_user():    
     try:
-        return '<h2>Hi {}</h2>'.format(users[user_id])
+        return render_template('index.html', utc_dt=datetime.datetime.utcnow())
     except IndexError:
         abort(404)
 
 @app.route('/about/')
 def about():
-    return '<h3>This is a Flask web application.</h3>'
+    return render_template('about.html', utc_dt=datetime.datetime.utcnow())
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
