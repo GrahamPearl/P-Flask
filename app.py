@@ -27,6 +27,12 @@ def db_setup():
 def get_books():
     books = book_controller.get_books()
     return jsonify(books)
+    #return render_template('index.html', books=books)
+
+@app.route('/book/<int:id>', methods=["GET"])
+def get_book(id):
+    book_details = book_controller.get_by_id(id)
+    return jsonify(book_details)
 
 @app.route("/book", methods=["POST"])
 def insert_book():
@@ -34,8 +40,8 @@ def insert_book():
     result = book_controller.insert_book(book_details["name"], book_details["price"], book_details["email"])
     return jsonify(result)
 
-@app.route('/book/', methods=["PUT"])
-def update_book():
+@app.route('/book/<int:id>', methods=["PUT"])
+def update_book(id):
     book_details = request.get_json()    
     result = book_controller.update_list(book_details["id"], book_details["name"], book_details["price"], book_details["email"])
     return jsonify(result)

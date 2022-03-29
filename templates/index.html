@@ -9,6 +9,20 @@ endblock %} {% block content %}
   <button id="prev" type="button" class="btn btn-secondary">Prev</button>
   <button id="next" type="button" class="btn btn-primary">Next</button>
   <div id="message"></div>
+<!---
+  -->
+  {% for book in books %}
+  <article class="book">
+    <header><div><h1>{{ book['name'] }}</h1>        
+    </header>
+    <p class="body">{{ book['price'] }}</p>
+  </article>
+  {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+<!---
+-->
 </main>
 
 <form action="/books" method="post">
@@ -19,13 +33,13 @@ endblock %} {% block content %}
           <a href={{url_for('db_setup')}} id="createDB" type="button" class="btn btn-primary">
             Create DB
           </a>
-          <a id="selectAll" type="button" class="btn btn-secondary">
+          <a href={{url_for('get_books')}} id="selectAll" type="button" class="btn btn-secondary">
             Select All
           </a>
-          <a id="selectItem" type="button" class="btn btn-secondary">
+          <a href={{url_for('get_book', id=1)}} id="selectItem" type="button" class="btn btn-secondary">
             Select Book Item
           </a>
-          <a id="createItem" type="button" class="btn btn-secondary">
+          <a href={{url_for('insert_book')}} id="createItem" type="button" class="btn btn-secondary">
             Create Book Item
           </a>
         </div>
