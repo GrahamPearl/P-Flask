@@ -2,4 +2,26 @@
 {% block title %}DUT Student Registration System{% endblock %}
 {% block content %}
 <h1>Test</h1>
+
+<main>
+    <h1>Book Shop</h1>
+    <div id="books" class="card-group">        
+    </div>
+    <div  class=""></div>
+    <button id="prev" type="button" class="btn btn-secondary">Prev</button>
+    <button id="next" type="button" class="btn btn-primary">Next</button>
+    <div id="message"></div>
+</main>
+
+<form action="/books" method="get">
+    <input type="submit" value="List Books" 
+         name="list_books" id="list_books" />
+</form>
+<div>
+</div>
+<form action="/books" method="post">
+    <button name="add_book" value="Add Book">Add</button>
+</form>
+
+<script src="{{ url_for('static', filename="js/index.js") }}" crossorigin="anonymous"></script>
 {% endblock %}

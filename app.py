@@ -1,6 +1,6 @@
 import datetime
 import book_controller
-from markupsafe import escape
+#from markupsafe import escape
 from flask import Flask, abort, render_template, jsonify, request
 app = Flask(__name__)
 

@@ -14,7 +14,7 @@
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"
     />    
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/styles.css") }}" />
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>

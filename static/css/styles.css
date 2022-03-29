@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css?family=Numans");
+html,
+body {
+    background-color: rgba(143, 18, 18, 0.5) !important;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+img .thumbnail {
+    height: 50px;
+}
+
+
+/*
+.card {
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(143, 18, 18, 0.5) !important;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #ffc312;
+}
+*/
