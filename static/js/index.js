@@ -61,5 +61,5 @@ async function getAllBooks(urlSource) {
 
 //alert('JS loading data');
 
-let urlBasePath = "https://www.googleapis.com/books/v1/volumes?q=Stephen+King&maxResults=10&startIndex=0";
+let urlBasePath = "https://www.googleapis.com/books/v1/volumes?q=Python&maxResults=10&startIndex=0";
 getAllBooks(urlBasePath);

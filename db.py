@@ -1,4 +1,5 @@
 import sqlite3
+
 DATABASE_NAME = "books.db"
 
 def get_db():
@@ -19,3 +20,4 @@ def create_tables():
     cursor = db.cursor()
     for table in tables:
         cursor.execute(table)
+    return True

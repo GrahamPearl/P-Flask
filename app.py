@@ -1,5 +1,6 @@
 import datetime
 import book_controller
+import db
 #from markupsafe import escape
 from flask import Flask, abort, render_template, jsonify, request
 app = Flask(__name__)
@@ -17,15 +18,20 @@ def greet_user():
     except IndexError:
         abort(404)
 
+@app.route('/setup', methods=["GET"])
+def db_setup():
+    result = db.create_tables()
+    return render_template('success.html', utc_dt=datetime.datetime.utcnow())
+
 @app.route('/books', methods=["GET"])
 def get_books():
     books = book_controller.get_books()
     return jsonify(books)
 
 @app.route("/book", methods=["POST"])
-def insert_game():
+def insert_book():
     book_details = request.get_json()    
-    result = book_controller.insert_game(book_details["name"], book_details["price"], book_details["email"])
+    result = book_controller.insert_book(book_details["name"], book_details["price"], book_details["email"])
     return jsonify(result)
 
 @app.route('/book/', methods=["PUT"])

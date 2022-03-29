@@ -1,29 +1,44 @@
-{% extends "base.html" %}
-{% block title %}DUT Student Registration System{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% block title %}DUT Student Registration System{%
+endblock %} {% block content %}
 <h1>Test</h1>
 
 <main>
-    <h1>Book Shop</h1>
-    <div id="books" class="card-group">        
-    </div>
-    <div  class=""></div>
-    <button id="prev" type="button" class="btn btn-secondary">Prev</button>
-    <button id="next" type="button" class="btn btn-primary">Next</button>
-    <div id="message"></div>
+  <h1>Book Shop</h1>
+  <div id="books" class="card-group"></div>
+  <div class=""></div>
+  <button id="prev" type="button" class="btn btn-secondary">Prev</button>
+  <button id="next" type="button" class="btn btn-primary">Next</button>
+  <div id="message"></div>
 </main>
 
-
+<form action="/books" method="post">
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">            
+          <a href={{url_for('db_setup')}} id="createDB" type="button" class="btn btn-primary">
+            Create DB
+          </a>
+          <a id="selectAll" type="button" class="btn btn-secondary">
+            Select All
+          </a>
+          <a id="selectItem" type="button" class="btn btn-secondary">
+            Select Book Item
+          </a>
+          <a id="createItem" type="button" class="btn btn-secondary">
+            Create Book Item
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>  
+</form>
 
 <form action="/books" method="get">
-    <input type="submit" value="List Books" 
-         name="list_books" id="list_books" />
+  <input type="submit" value="List Books" name="list_books" id="list_books" />
 </form>
-<div>
-</div>
-<form action="/books" method="post">
-    <button name="add_book" value="Add Book">Add</button>
-</form>
+<div></div>
 
-<script src="{{ url_for('static', filename="js/index.js") }}" crossorigin="anonymous"></script>
+<!--- <script src="{{ url_for('static', filename="js/index.js") }}" crossorigin="anonymous"></script>
+-->
 {% endblock %}
