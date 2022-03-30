@@ -2,9 +2,7 @@ import datetime
 import book_controller
 import json
 import db
-
-#from markupsafe import escape
-from flask import Flask, abort, render_template, jsonify, request
+from flask import abort, render_template, jsonify, request, Flask
 app = Flask(__name__)
 
 
@@ -25,10 +23,35 @@ def db_setup():
     result = db.create_tables()
     return render_template('success.html', utc_dt=datetime.datetime.utcnow())
 
+@app.route('/contacts', methods=["GET"])
+def get_contacts():
+    books = book_controller.get_books()    
+    return render_template('contacts.html', books=books)
+
+@app.route('/contact/<int:id>', methods=["GET"])
+def get_contact(id):
+    book_details = book_controller.get_by_id(id)
+    return render_template('contacts.html', book=book_details)
+    #return jsonify(book_details)
+
+@app.route("/contact", methods=["POST"])
+def insert_contact():
+    book_details = request.get_json()    
+    result = book_controller.insert_book(book_details["name"], book_details["price"], book_details["email"])
+    return jsonify(result)
+
+@app.route('/contact/<int:id>', methods=["PUT"])
+def update_contact(id):
+    book_details = request.get_json()    
+    result = book_controller.update_list(book_details["id"], book_details["name"], book_details["price"], book_details["email"])
+    return jsonify(result)
+
+#==========================================================================================================================
+
 @app.route('/books', methods=["GET"])
 def get_books():
     books = book_controller.get_books()    
-    return render_template('index.html', books=books)
+    return render_template('books.html', books=books)
     #return jsonify(books)
     #
     #
@@ -36,7 +59,7 @@ def get_books():
 @app.route('/book/<int:id>', methods=["GET"])
 def get_book(id):
     book_details = book_controller.get_by_id(id)
-    return render_template('index.html', book=book_details)
+    return render_template('books.html', book=book_details)
     #return jsonify(book_details)
 
 @app.route("/book", methods=["POST"])

@@ -5,75 +5,12 @@
 <h1>Test</h1>
 
 <main>
-  <h1>Book Shop</h1>
-  <div id="books" class="card-group"></div>
-  <div class=""></div>
-  <button id="prev" type="button" class="btn btn-secondary">Prev</button>
-  <button id="next" type="button" class="btn btn-primary">Next</button>
-  <div id="message"></div>
-<!---
-  -->
-  <div class="container">  
-    {% if books %}
-    {% for book in books %}
-  <div class="card h-100" style="width: 16rem;">    
-    <div class="card-body">
-      <h5 class="card-title">{{ book[1] }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Price {{ book[2] }}</h6>
-      <p class="card-text">Email {{ book[3] }}</p>
-      <a href="mailto:{{ book[3] }}" class="card-link">Send Email</a>
-    </div>
-  </div>
-    
-  {% if not loop.last %}      
-    {% endif %}
-  {% endfor %}
-  {% endif %}  
-
-  {% if book %}
-  <div class="card h-100" style="width: 16rem;">    
-    <div class="card-body">
-      <h5 class="card-title">{{ book[1] }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Price {{ book[2] }}</h6>
-      <p class="card-text">Email {{ book[3] }}</p>
-      <a href="mailto:{{ book[3] }}" class="card-link">Send Email</a>
-    </div>
-  </div>
-  {% endif %}
-
-  </div>
-<!---
--->
+  <h1>Book Shop</h1>          
 </main>
-
-<form action="/books" method="post">
-  <div class="container">
-    <div class="d-flex justify-content-center h-100">
-      <div class="card">
-        <div class="card-header">            
-          <a href={{url_for('db_setup')}} id="createDB" type="button" class="btn btn-primary">
-            Create DB
-          </a>
-          <a href={{url_for('get_books')}} id="selectAll" type="button" class="btn btn-secondary">
-            Select All
-          </a>
-          <a href={{url_for('get_book', id=1)}} id="selectItem" type="button" class="btn btn-secondary">
-            Select Book Item
-          </a>
-          <a href={{url_for('insert_book')}} id="createItem" type="button" class="btn btn-secondary">
-            Create Book Item
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>  
-</form>
-
-<form action="/books" method="get">
-  <input type="submit" value="List Books" name="list_books" id="list_books" />
-</form>
-<div></div>
-
-<!--- <script src="{{ url_for('static', filename="js/index.js") }}" crossorigin="anonymous"></script>
--->
 {% endblock %}
+
+<!--- 
+-->
+
+<!---
+-->

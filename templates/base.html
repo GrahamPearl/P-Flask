@@ -2,7 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link 
+      type="text/css"
+      href="{{ url_for('static',filename="css/styles.css") }}"
+      rel="stylesheet" 
+    /> 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/index.css") }}" />
+
     <link
+      type="text/css"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -13,17 +21,46 @@
       href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
       integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
       crossorigin="anonymous"
-    />    
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="css/styles.css") }}" />
+    />
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
     <div class="collapse" id="navbarExternal">
-      <div class="bg-dark p-4">        
-        <h5 class="text-white h4">DUT Student Registration System</h5>                
-        <embed type="text/html" src="{{ url_for('static', filename="geolocation.html") }}"" width="100%" height="100px">        
-        </div>
+      <div class="bg-dark p-4">
+        <h5 class="text-white h4">DUT Student Registration System</h5>
+        <div class="container">
+          <div class="d-flex justify-content-center h-100">
+            <div class="card">          
+                <a href={{url_for('db_setup')}} id="createDB" type="button" class="btn btn-primary">
+                  Create DB
+                </a>
+                <a href={{url_for('get_contacts')}} id="selectAll" type="button" class="btn btn-secondary">
+                  Select All Contacts
+                </a>
+                <a href={{url_for('get_contact', id=1)}} id="selectItem" type="button" class="btn btn-secondary">
+                  Select Contact Item
+                </a>
+                <a href={{url_for('insert_contact')}} id="createItem" type="button" class="btn btn-secondary">
+                  Create Contact Item
+                </a>
+                <hr>            
+                <a href={{url_for('get_books')}} id="selectAll" type="button" class="btn btn-secondary">
+                  Select All Books
+                </a>
+                <a href={{url_for('get_book', id=1)}} id="selectItem" type="button" class="btn btn-secondary">
+                  Select Book Item
+                </a>            
+            </div>
+          </div>
+        </div>  
+
+        <embed 
+          type="text/html" 
+          src="{{ url_for('static',filename="geolocation.html") }}" 
+          width="100%" 
+          height="100px">          
       </div>
+    </div>
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <button
@@ -51,5 +88,10 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script 
+      src="{{ url_for('static', filename="js/index.js") }}" 
+      crossorigin="anonymous">
+    </script>
   </body>
+
 </html>
