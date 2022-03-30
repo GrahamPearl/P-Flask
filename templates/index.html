@@ -12,6 +12,7 @@ endblock %} {% block content %}
 <!---
   -->
   <div class="container">
+  {% if books %}
   {% for book in books %}
   <div class="card h-100" style="width: 16rem;">    
     <div class="card-body">
@@ -21,6 +22,18 @@ endblock %} {% block content %}
       <a href="mailto:{{ book[3] }}" class="card-link">Send Email</a>
     </div>
   </div>
+  {% endif %}
+
+  {% if book %}
+  <div class="card h-100" style="width: 16rem;">    
+    <div class="card-body">
+      <h5 class="card-title">{{ book[1] }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Price {{ book[2] }}</h6>
+      <p class="card-text">Email {{ book[3] }}</p>
+      <a href="mailto:{{ book[3] }}" class="card-link">Send Email</a>
+    </div>
+  </div>
+  {% endif %}
     
   {% if not loop.last %}
       <hr>
