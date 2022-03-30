@@ -36,7 +36,8 @@ def get_books():
 @app.route('/book/<int:id>', methods=["GET"])
 def get_book(id):
     book_details = book_controller.get_by_id(id)
-    return jsonify(book_details)
+    return render_template('index.html', book=book_details)
+    #return jsonify(book_details)
 
 @app.route("/book", methods=["POST"])
 def insert_book():

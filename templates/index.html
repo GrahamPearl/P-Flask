@@ -1,5 +1,7 @@
-{% extends "base.html" %} {% block title %}DUT Student Registration System{%
-endblock %} {% block content %}
+{% extends "base.html" %} 
+{% block title %}DUT Student Registration System
+{%endblock %} 
+{% block content %}
 <h1>Test</h1>
 
 <main>
@@ -11,9 +13,9 @@ endblock %} {% block content %}
   <div id="message"></div>
 <!---
   -->
-  <div class="container">
-  {% if books %}
-  {% for book in books %}
+  <div class="container">  
+    {% if books %}
+    {% for book in books %}
   <div class="card h-100" style="width: 16rem;">    
     <div class="card-body">
       <h5 class="card-title">{{ book[1] }}</h5>
@@ -22,7 +24,11 @@ endblock %} {% block content %}
       <a href="mailto:{{ book[3] }}" class="card-link">Send Email</a>
     </div>
   </div>
-  {% endif %}
+    
+  {% if not loop.last %}      
+    {% endif %}
+  {% endfor %}
+  {% endif %}  
 
   {% if book %}
   <div class="card h-100" style="width: 16rem;">    
@@ -34,11 +40,7 @@ endblock %} {% block content %}
     </div>
   </div>
   {% endif %}
-    
-  {% if not loop.last %}
-      <hr>
-    {% endif %}
-  {% endfor %}
+
   </div>
 <!---
 -->
