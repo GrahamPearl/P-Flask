@@ -37,4 +37,5 @@ def get_books():
     cursor = db.cursor()
     query = "SELECT * FROM books"
     cursor.execute(query)
+    #return cursor
     return cursor.fetchall()

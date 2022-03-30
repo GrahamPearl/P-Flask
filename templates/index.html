@@ -11,16 +11,22 @@ endblock %} {% block content %}
   <div id="message"></div>
 <!---
   -->
+  <div class="container">
   {% for book in books %}
-  <article class="book">
-    <header><div><h1>{{ book['name'] }}</h1>        
-    </header>
-    <p class="body">{{ book['price'] }}</p>
-  </article>
+  <div class="card h-100" style="width: 16rem;">    
+    <div class="card-body">
+      <h5 class="card-title">{{ book[1] }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Price {{ book[2] }}</h6>
+      <p class="card-text">Email {{ book[3] }}</p>
+      <a href="mailto:{{ book[3] }}" class="card-link">Send Email</a>
+    </div>
+  </div>
+    
   {% if not loop.last %}
       <hr>
     {% endif %}
   {% endfor %}
+  </div>
 <!---
 -->
 </main>

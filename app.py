@@ -1,6 +1,8 @@
 import datetime
 import book_controller
+import json
 import db
+
 #from markupsafe import escape
 from flask import Flask, abort, render_template, jsonify, request
 app = Flask(__name__)
@@ -25,9 +27,11 @@ def db_setup():
 
 @app.route('/books', methods=["GET"])
 def get_books():
-    books = book_controller.get_books()
-    return jsonify(books)
-    #return render_template('index.html', books=books)
+    books = book_controller.get_books()    
+    return render_template('index.html', books=books)
+    #return jsonify(books)
+    #
+    #
 
 @app.route('/book/<int:id>', methods=["GET"])
 def get_book(id):
